@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <h2>User Info</h2>
+        <p><strong>Username:</strong> {{ user_info['username'] }}</p>
+        <p><strong>Email:</strong> {{ user_info['email'] }}</p>
+
+        <h2>Predictions</h2>
+        <ul>
+            {% for prediction in predictions %}
+                <li>{{ prediction['date'] }}: Symptoms - {{ prediction['symptoms'] }}, Prediction - {{ prediction['prediction'] }}</li>
+            {% else %}
+                <li>No predictions found.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Chat Logs</h2>
+        <ul>
+            {% for chat in chat_logs %}
+                <li>{{ chat['date'] }}: User - {{ chat['user_input'] }}, Bot - {{ chat['bot_response'] }}</li>
+            {% else %}
+                <li>No chat logs found.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Feedback</h2>
+        <ul>
+            {% for feedback in feedbacks %}
+                <li>{{ feedback['date'] }}: Name - {{ feedback['name'] }}, Email - {{ feedback['email'] }}, Phone - {{ feedback['phone'] }}, Location - {{ feedback['location'] }}, Suggestion - {{ feedback['suggestion'] }}</li>
+            {% else %}
+                <li>No feedback found.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+</body>
+</html>

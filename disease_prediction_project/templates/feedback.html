@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://d2jx2rerrg6sh3.cloudfront.net/images/news/ImageForNews_735641_16735286404943588.jpg') no-repeat center center fixed; /* Background image */
+            background-size: cover; /* Cover the entire body */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px; /* Space between header and form */
+        }
+
+        h1 {
+            color: #ffffff; /* White color for main title */
+            font-size: 3em; /* Increased font size */
+            margin: 0; /* Remove default margin */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            padding: 10px; /* Padding around the text */
+            border-radius: 8px; /* Rounded corners for background */
+        }
+
+        h2 {
+            color: #ffffff; /* White color for subheading */
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8); /* White background with opacity for form */
+            padding: 30px;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #0d47a1; /* Blue border for form */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+        }
+
+        form:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        label {
+            margin-top: 15px;
+            display: block;
+            color: #555;
+            font-weight: bold; /* Bold labels for better readability */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border 0.3s, box-shadow 0.3s; /* Animation for focus */
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #0d47a1; /* Change focus border to blue */
+            outline: none;
+            box-shadow: 0 0 5px rgba(13, 71, 161, 0.5); /* Subtle glow effect on focus */
+        }
+
+        textarea {
+            resize: vertical;
+            height: 120px; /* Increased height for textarea */
+        }
+
+        button {
+            background-color: #0d47a1; /* Blue button */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s; /* Animation for hover */
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0a74a6; /* Darker blue on hover */
+            transform: scale(1.05); /* Slight grow effect on hover */
+        }
+
+        @media (max-width: 500px) {
+            form {
+                padding: 20px;
+            }
+            button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feedback Form </h1> <!-- Main Title -->
+    </header>
+    <h2>We Value Your Feedback</h2> <!-- Subheading -->
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone no:</label>
+        <input type="text" id="phone" name="phone">
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location">
+
+        <label for="suggestion">Suggestion:</label>
+        <textarea id="suggestion" name="suggestion" required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</body>
+</html>
+

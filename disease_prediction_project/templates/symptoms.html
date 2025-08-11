@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Symptoms | MyClinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #071e3c;
+      --accent: #e63946;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --text-light: #6c757d;
+      --gradient: linear-gradient(135deg, #1b2d45, #2f4868);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      display: flex;
+    }
+
+    aside {
+      background-color: var(--primary);
+      color: white;
+      width: 240px;
+      height: 100vh;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    aside h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    aside nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    aside nav a {
+      color: #cfd8dc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    aside nav a:hover {
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px;
+      width: calc(100% - 260px);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .symptom-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .symptom-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .symptom-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .symptom-header {
+      background: var(--gradient);
+      padding: 16px 20px;
+    }
+
+    .symptom-title {
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .symptom-list {
+      list-style-type: disc;
+      padding: 20px 30px;
+      margin: 0;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .symptom-list li {
+      margin-bottom: 6px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div>
+    <h1>MyClinic</h1>
+   <nav>
+      <a href="/">Home</a>
+      <a href="/symptoms"">Symptoms</a>
+      <a href="/region">Data Analysis</a>
+      <a href="/hospitals">Hospitals</a>
+      <a href="/appointments">Appointment</a>
+      <a href="/diet">Your Diet</a>
+    </nav>
+  </div>
+  </div>
+  <div class="progress">
+    <p>page <strong>1 / 5</strong></p>
+    <div><div></div></div>
+  </div>
+</aside>
+
+<main>
+  <h2>Symptom Clusters</h2>
+  <div class="symptom-container">
+
+    <!-- Sample Card -->
+    <div class="symptom-card">
+      <div class="symptom-header">
+        <div class="symptom-title">Skin & Allergies</div>
+      </div>
+      <ul class="symptom-list">
+        <li>itching</li>
+        <li>skin rash</li>
+        <li>nodal skin eruptions</li>
+        <li>dry skin</li>
+        <li>scaly skin</li>
+        <li>pus filled pimples</li>
+        <li>small dents in nails</li>
+        <li>inflammatory nails</li>
+        <li>blister</li>
+        <li>skin peeling</li>
+        <li>silver like dusting</li>
+      </ul>
+    </div>
+
+    <!-- Copy this block and replace content for each cluster -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Respiratory</div></div>
+      <ul class="symptom-list">
+        <li>continuous sneezing</li><li>cough</li><li>breathlessness</li><li>phlegm</li><li>chest pain</li><li>wheezing</li><li>throat irritation</li><li>sinus pressure</li>
+      </ul>
+    </div>
+
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Gastrointestinal</div></div>
+      <ul class="symptom-list">
+        <li>stomach pain</li><li>vomiting</li><li>nausea</li><li>acidity</li><li>indigestion</li><li>diarrhoea</li><li>constipation</li><li>abdominal pain</li><li>ulcers on tongue</li><li>belly pain</li><li>bloody stool</li>
+      </ul>
+    </div>
+
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Neurological</div></div>
+      <ul class="symptom-list">
+        <li>headache</li><li>dizziness</li><li>loss of balance</li><li>unsteadiness</li><li>numbness</li><li>slurred speech</li><li>mood swings</li><li>anxiety</li><li>depression</li><li>lack of concentration</li><li>restlessness</li><li>irritability</li><li>altered sensorium</li>
+      </ul>
+    </div>
+
+    <!-- Add the rest of the symptom clusters in the same format below... -->
+
+    <!-- Musculoskeletal -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Musculoskeletal</div></div>
+      <ul class="symptom-list">
+        <li>joint pain</li><li>back pain</li><li>muscle pain</li><li>muscle wasting</li><li>swollen legs</li><li>stiff neck</li><li>weakness in limbs</li><li>knee pain</li><li>hip joint pain</li>
+      </ul>
+    </div>
+
+    <!-- Urological & Renal -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Urological & Renal</div></div>
+      <ul class="symptom-list">
+        <li>burning micturition</li><li>spotting urination</li><li>dark urine</li><li>foul smell of urine</li><li>bladder discomfort</li><li>pain in anal region</li>
+      </ul>
+    </div>
+
+    <!-- Cardiovascular -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Cardiovascular</div></div>
+      <ul class="symptom-list">
+        <li>chest pain</li><li>palpitations</li><li>high blood pressure</li><li>low blood pressure</li><li>sweating</li><li>fatigue</li>
+      </ul>
+    </div>
+
+    <!-- Endocrine & Metabolic -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Endocrine & Metabolic</div></div>
+      <ul class="symptom-list">
+        <li>weight gain</li><li>weight loss</li><li>lethargy</li><li>cold hands and feets</li><li>irregular sugar level</li><li>excessive hunger</li><li>increased appetite</li>
+      </ul>
+    </div>
+
+    <!-- Eye & ENT -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Eye & ENT</div></div>
+      <ul class="symptom-list">
+        <li>sunken eyes</li><li>blurred and distorted vision</li><li>watering from eyes</li><li>redness of eyes</li><li>patches in throat</li><li>swollen lymph nodes</li><li>runny nose</li>
+      </ul>
+    </div>
+
+    <!-- General / Systemic -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">General / Systemic</div></div>
+      <ul class="symptom-list">
+        <li>fever</li><li>high fever</li><li>chills</li><li>shivering</li><li>fatigue</li><li>malaise</li><li>dehydration</li><li>yellowing of eyes</li><li>yellowish skin</li><li>toxicity</li>
+      </ul>
+    </div>
+
+    <!-- Infections -->
+    <div class="symptom-card">
+      <div class="symptom-header"><div class="symptom-title">Infections</div></div>
+      <ul class="symptom-list">
+        <li>pus discharge</li><li>dischromic patches</li><li>skin infection</li><li>nodal skin eruptions</li><li>fungal infection</li><li>enlarged lymph nodes</li><li>inflammatory swelling</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

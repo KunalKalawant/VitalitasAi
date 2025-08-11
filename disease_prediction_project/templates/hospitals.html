@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pune Hospitals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #071e3c;
+      --accent: #e63946;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --text-light: #6c757d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      display: flex;
+    }
+
+    aside {
+      background-color: var(--primary);
+      color: white;
+      width: 240px;
+      height: 100vh;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    aside h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    aside nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    aside nav a {
+      color: #cfd8dc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    aside nav a:hover {
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px;
+      width: calc(100% - 260px);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hospital-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .hospital-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .hospital-address, .hospital-phone {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin: 4px 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div>
+    <h1>MyClinic</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/symptoms">Symptoms</a>
+      <a href="/region">Data Analysis</a>
+      <a href="/appointments">Appointment</a>
+      <a href="/diet">Your Diet</a>
+    </nav>
+  </div>
+  </div>
+  <div class="progress">
+    <p>page <strong>3 / 5</strong></p>
+    <div><div></div></div>
+  </div>
+</aside>
+
+<main>
+  <div class="container">
+    <h2>🏥 Top 10 Hospitals in Pune</h2>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Ruby Hall Clinic</div>
+      <div class="hospital-address">40, Sassoon Road, Pune 411001</div>
+      <div class="hospital-phone">Phone: 020 6645 5100</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Jehangir Hospital</div>
+      <div class="hospital-address">32, Sassoon Road, Pune 411001</div>
+      <div class="hospital-phone">Phone: 020 6681 9999</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Sahyadri Hospital</div>
+      <div class="hospital-address">Karve Road, Deccan Gymkhana, Pune 411004</div>
+      <div class="hospital-phone">Phone: 020 6721 6666</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Columbia Asia Hospital</div>
+      <div class="hospital-address">22, 2A Mundhwa - Kharadi Bypass Rd, Pune 411014</div>
+      <div class="hospital-phone">Phone: 020 7129 0129</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Deenanath Mangeshkar Hospital</div>
+      <div class="hospital-address">Erandwane, Pune 411004</div>
+      <div class="hospital-phone">Phone: 020 4015 1000</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Aditya Birla Memorial Hospital</div>
+      <div class="hospital-address">Chinchwad, Pune 411033</div>
+      <div class="hospital-phone">Phone: 020 3071 7070</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Noble Hospital</div>
+      <div class="hospital-address">Magarpatta City, Hadapsar, Pune 411013</div>
+      <div class="hospital-phone">Phone: 020 6628 4444</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Bharati Vidyapeeth Medical Hospital</div>
+      <div class="hospital-address">Katraj-Dhankawadi, Pune 411043</div>
+      <div class="hospital-phone">Phone: 020 2436 3132</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">KEM Hospital</div>
+      <div class="hospital-address">Rasta Peth, Pune 411011</div>
+      <div class="hospital-phone">Phone: 020 6603 7300</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Poona Hospital and Research Centre</div>
+      <div class="hospital-address">Sadashiv Peth, Pune 411030</div>
+      <div class="hospital-phone">Phone: 020 6609 6060</div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

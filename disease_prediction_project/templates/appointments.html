@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment | MyClinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #071e3c;
+      --accent: #e63946;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --text-light: #6c757d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      display: flex;
+    }
+
+    aside {
+      background-color: var(--primary);
+      color: white;
+      width: 240px;
+      height: 100vh;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    aside h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    aside nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    aside nav a {
+      color: #cfd8dc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    aside nav a:hover {
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px;
+      width: calc(100% - 260px);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-box, .hospital-list {
+      background: var(--card-bg);
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-box form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-box label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .form-box input, .form-box select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+
+    .form-box button {
+      grid-column: span 2;
+      padding: 12px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .form-box button:hover {
+      background-color: var(--accent);
+    }
+
+    .hospital-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .hospital-card {
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      border-radius: 10px;
+      background: var(--card-bg);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .hospital-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .hospital-address, .hospital-phone {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div>
+    <h1>MyClinic</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/symptoms">Symptoms</a>
+      <a href="/hospitals">Hospitals</a>
+
+      <a href="/region">Data Analysis</a>
+
+    </nav>
+  </div>
+  <div class="progress">
+    <p>page <strong>4 / 5</strong></p>
+    <div><div></div></div>
+  </div>
+</aside>
+
+<main>
+  <div class="form-box">
+    <h2>Book an Appointment</h2>
+    <form>
+      <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" />
+      </div>
+      <div>
+        <label for="phone">Contact Number</label>
+        <input type="tel" id="phone" placeholder="e.g., 9876543210" />
+      </div>
+      <div>
+        <label for="hospital">Select Hospital</label>
+        <select id="hospital">
+          <option>Ruby Hall Clinic</option>
+          <option>Jehangir Hospital</option>
+          <option>Sahyadri Hospital</option>
+          <option>Columbia Asia Hospital</option>
+          <option>Deenanath Mangeshkar Hospital</option>
+          <option>Aditya Birla Memorial Hospital</option>
+          <option>Noble Hospital</option>
+          <option>Bharati Vidyapeeth Medical Hospital</option>
+          <option>KEM Hospital</option>
+          <option>Poona Hospital and Research Centre</option>
+        </select>
+      </div>
+      <div>
+        <label for="date">Appointment Date</label>
+        <input type="date" id="date" />
+      </div>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+
+  <div class="hospital-list">
+    <div class="hospital-card">
+      <div class="hospital-name">Ruby Hall Clinic</div>
+      <div class="hospital-address">40, Sassoon Road, Pune 411001</div>
+      <div class="hospital-phone">Phone: 020 6645 5100</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Jehangir Hospital</div>
+      <div class="hospital-address">32, Sassoon Road, Pune 411001</div>
+      <div class="hospital-phone">Phone: 020 6681 9999</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Sahyadri Hospital</div>
+      <div class="hospital-address">Karve Road, Deccan Gymkhana, Pune 411004</div>
+      <div class="hospital-phone">Phone: 020 6721 6666</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Columbia Asia Hospital</div>
+      <div class="hospital-address">22, Mundhwa-Kharadi Bypass Rd, Pune 411014</div>
+      <div class="hospital-phone">Phone: 020 7129 0129</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Deenanath Mangeshkar Hospital</div>
+      <div class="hospital-address">Erandwane, Pune 411004</div>
+      <div class="hospital-phone">Phone: 020 4015 1000</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Aditya Birla Memorial Hospital</div>
+      <div class="hospital-address">Chinchwad, Pune 411033</div>
+      <div class="hospital-phone">Phone: 020 3071 7070</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Noble Hospital</div>
+      <div class="hospital-address">Magarpatta City, Hadapsar, Pune 411013</div>
+      <div class="hospital-phone">Phone: 020 6628 4444</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Bharati Vidyapeeth Medical Hospital</div>
+      <div class="hospital-address">Katraj-Dhankawadi, Pune 411043</div>
+      <div class="hospital-phone">Phone: 020 2436 3132</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">KEM Hospital</div>
+      <div class="hospital-address">Rasta Peth, Pune 411011</div>
+      <div class="hospital-phone">Phone: 020 6603 7300</div>
+    </div>
+
+    <div class="hospital-card">
+      <div class="hospital-name">Poona Hospital and Research Centre</div>
+      <div class="hospital-address">Sadashiv Peth, Pune 411030</div>
+      <div class="hospital-phone">Phone: 020 6609 6060</div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

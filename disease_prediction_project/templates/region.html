@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disease Stats India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #071e3c;
+      --accent: #e63946;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --text-light: #6c757d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      display: flex;
+    }
+
+    aside {
+      background-color: var(--primary);
+      color: white;
+      width: 240px;
+      height: 100vh;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    aside h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    aside nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    aside nav a {
+      color: #cfd8dc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    aside nav a:hover {
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px;
+      width: calc(100% - 260px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .chart-box {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1rem;
+      margin: 0 0 10px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 200px !important;
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div>
+    <h1>MyClinic</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/symptoms">Symptoms</a>
+      <a href="/hospitals">Hospitals</a>
+      <a href="/appointments">Appointment</a>
+      <a href = "/diet">Your Diet</a>
+    </nav>
+  </div>
+  </div>
+  <div class="progress">
+    <p>page <strong>2 / 5</strong></p>
+    <div><div></div></div>
+  </div>
+</aside>
+
+<main>
+  <div class="container">
+    <div class="chart-box">
+      <h2>Tuberculosis Incidence</h2>
+      <canvas id="tbChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h2>Diabetes Prevalence</h2>
+      <canvas id="diabetesChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h2>HIV/AIDS Cases</h2>
+      <canvas id="hivChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h2>Hepatitis B (MH)</h2>
+      <canvas id="hepbChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h2>Dengue vs Global Share</h2>
+      <canvas id="dengueChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h2>Disease Burden %</h2>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+</main>
+
+<script>
+  new Chart(document.getElementById('tbChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Tuberculosis'],
+      datasets: [{
+        label: 'per 100k',
+        data: [192],
+        backgroundColor: 'rgba(75, 192, 192, 0.6)'
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+  });
+
+  new Chart(document.getElementById('diabetesChart'), {
+    type: 'bar',
+    data: {
+      labels: ['India'],
+      datasets: [{
+        label: 'millions',
+        data: [212],
+        backgroundColor: 'rgba(255, 159, 64, 0.6)'
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+  });
+
+  new Chart(document.getElementById('hivChart'), {
+    type: 'bar',
+    data: {
+      labels: ['India'],
+      datasets: [{
+        label: 'millions',
+        data: [3.14],
+        backgroundColor: 'rgba(153, 102, 255, 0.6)'
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+  });
+
+  new Chart(document.getElementById('hepbChart'), {
+  type: 'line',
+  data: {
+    labels: ['2021‑22 (Maharashtra)', '2022‑23 (Maharashtra)'],
+    datasets: [{
+      label: 'Confirmed HBV Cases (Maharashtra state)',
+      data: [9000, 65000],
+      borderColor: 'rgba(255, 99, 132, 0.7)',
+      backgroundColor: 'rgba(255, 99, 132, 0.3)',
+      fill: true,
+      tension: 0.4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        suggestedMax: 70000
+      }
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          afterLabel: function(context) {
+            return 'Note: Maharashtra testing rates increased sharply in 2022‑23';
+          }
+        }
+      }
+    }
+  }
+});
+
+
+  new Chart(document.getElementById('dengueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Reported Share (%)', 'Estimated True Share (%)'],
+    datasets: [{
+      label: 'India’s Global Dengue Share',
+      data: [3.06, 33],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)'
+      ]
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 40,
+        title: {
+          display: true,
+          text: 'Percentage (%)'
+        }
+      }
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            const label = context.label === 'Reported Share (%)' 
+              ? 'Based on 233k cases vs 7.6M global (WHO)'
+              : 'Lancet Global Health estimate (model adjusted)';
+            return `${context.dataset.label}: ${context.formattedValue}% - ${label}`;
+          }
+        }
+      }
+    }
+  }
+});
+
+
+
+  new Chart(document.getElementById('pieChart'), {
+    type: 'pie',
+    data: {
+      labels: ['Tuberculosis', 'Diabetes', 'HIV/AIDS', 'Hepatitis B', 'Dengue'],
+      datasets: [{
+        label: '% Share',
+        data: [20, 30, 10, 15, 25],
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(255, 159, 64, 0.6)',
+          'rgba(153, 102, 255, 0.6)',
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)'
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } }
+    }
+  });
+</script>
+
+</body>
+</html>

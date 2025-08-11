@@ -1,0 +1,290 @@
+<!-- ✅ PLACE THIS INSIDE YOUR CURRENT CODE replacing <form> section and the script block -->
+<!-- Already includes weather dropdown and updated diet logic -->
+<!-- Begin Full Page Below -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Planner | MyClinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #071e3c;
+      --accent: #e63946;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --text-light: #6c757d;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      display: flex;
+    }
+    aside {
+      background-color: var(--primary);
+      color: white;
+      width: 240px;
+      height: 100vh;
+      padding: 30px 20px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    aside h1 { font-size: 1.5rem; margin-bottom: 2rem; }
+    aside nav { display: flex; flex-direction: column; gap: 1.5rem; }
+    aside nav a {
+      color: #cfd8dc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    aside nav a:hover { color: white; }
+
+    main {
+      margin-left: 260px;
+      padding: 40px;
+      width: 100%;
+    }
+
+    h2 { margin-top: 0; color: var(--primary); }
+    form {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+
+    .symptom-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .symptom-buttons button {
+      background-color: #dee2e6;
+      color: #333;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .symptom-buttons button:hover,
+    .symptom-buttons button.active {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button[type="submit"]:hover { background-color: #122132; }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 25px;
+    }
+
+    .highlight { font-weight: bold; color: var(--accent); }
+    .result-content { line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div>
+    <h1>MyClinic</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/symptoms">Symptoms</a>
+      <a href="/region">Data Analysis</a>
+      <a href="/hospitals">Hospitals</a>
+      <a href="/appointments">Appointment</a>
+    </nav>
+  </div>
+</aside>
+
+<main>
+  <div class="container">
+    <h2>Daily Health Planner</h2>
+    <form id="healthForm">
+      <div class="form-group">
+        <label>Sleep Hours Last Night</label>
+        <input type="number" id="sleep" min="0" max="24" required />
+      </div>
+      <div class="form-group">
+        <label>Water Glasses Consumed Today</label>
+        <input type="number" id="water" min="0" max="20" required />
+      </div>
+      <div class="form-group">
+        <label>Activity Level</label>
+        <select id="activity">
+          <option value="low">Low (sedentary)</option>
+          <option value="medium">Medium (light movement)</option>
+          <option value="high">High (exercise, travel)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Current Weather</label>
+        <select id="weather">
+          <option value="hot">Hot</option>
+          <option value="cold">Cold</option>
+          <option value="rainy">Rainy</option>
+          <option value="humid">Humid</option>
+          <option value="dry">Dry</option>
+          <option value="moderate" selected>Moderate</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Symptoms</label>
+        <div class="symptom-buttons">
+          <button type="button" data-symptom="headache">Headache</button>
+          <button type="button" data-symptom="fever">Fever</button>
+          <button type="button" data-symptom="constipation">Constipation</button>
+          <button type="button" data-symptom="vomiting">Vomiting</button>
+          <button type="button" data-symptom="cough">Cough</button>
+          <button type="button" data-symptom="skin_rash">Skin Rash</button>
+          <button type="button" data-symptom="joint_pain">Joint Pain</button>
+          <button type="button" data-symptom="fatigue">Fatigue</button>
+          <button type="button" data-symptom="sore_throat">Sore Throat</button>
+          <button type="button" data-symptom="dehydration">Dehydration</button>
+        </div>
+      </div>
+
+      <button type="submit">Generate My Routine</button>
+    </form>
+
+    <div class="card" id="resultBox" style="display:none;">
+      <h3>Your Daily Health Routine</h3>
+      <div class="result-content" id="recommendations"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const selected = new Set();
+
+  const recommendations = {
+    headache: { breakfast: "Banana smoothie with almonds", lunch: "Spinach and chickpea salad", dinner: "Grilled salmon", tips: "Avoid screen time, meditate" },
+    fever: { breakfast: "Oatmeal with berries", lunch: "Veg soup", dinner: "Khichdi with curd", tips: "Rest and hydrate" },
+    constipation: { breakfast: "Papaya with chia", lunch: "Spinach roti", dinner: "Oats with flax", tips: "Increase fiber, walk" },
+    vomiting: { breakfast: "Toast and banana", lunch: "Rice and boiled potato", dinner: "Applesauce", tips: "Avoid oily food" },
+    cough: { breakfast: "Honey tea", lunch: "Turmeric dal rice", dinner: "Lentil soup", tips: "Inhale steam" },
+    skin_rash: { breakfast: "Cucumber mint smoothie", lunch: "Salad with lemon", dinner: "Barley and veggies", tips: "Use aloe vera" },
+    joint_pain: { breakfast: "Turmeric milk", lunch: "Tofu with greens", dinner: "Omega-3 soup", tips: "Gentle stretching" },
+    fatigue: { breakfast: "Eggs and toast", lunch: "Brown rice with dal", dinner: "Quinoa salad", tips: "Nap and hydrate" },
+    sore_throat: { breakfast: "Warm milk", lunch: "Steamed rice and dal", dinner: "Warm soup", tips: "Gargle salt water" },
+    dehydration: { breakfast: "Coconut water", lunch: "Buttermilk and salad", dinner: "Fruit broth", tips: "Drink ORS" }
+  };
+
+  const weatherTips = {
+    hot: "Eat light meals with cucumber, watermelon, and coconut water. Avoid spicy and oily foods.",
+    cold: "Include soups, ginger tea, turmeric milk, and warm foods. Avoid cold beverages.",
+    rainy: "Avoid street food. Stick to home-cooked warm meals like khichdi and ginger-based drinks.",
+    humid: "Eat hydrating fruits and veggies. Avoid fried foods. Drink buttermilk or lemon water.",
+    dry: "Include ghee, nuts, and moist foods. Avoid excessive salt and caffeine.",
+    moderate: "Maintain a balanced diet with fruits, veggies, and protein-rich foods."
+  };
+
+  document.querySelectorAll('[data-symptom]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sym = btn.getAttribute('data-symptom');
+      btn.classList.toggle('active');
+      if (selected.has(sym)) selected.delete(sym);
+      else selected.add(sym);
+    });
+  });
+
+  function mostCommonMeal(symptomSet, type) {
+    const counts = {};
+    symptomSet.forEach(sym => {
+      const rec = recommendations[sym];
+      if (rec && rec[type]) {
+        const meal = rec[type];
+        counts[meal] = (counts[meal] || 0) + 1;
+      }
+    });
+    return Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] || "Standard healthy meal";
+  }
+
+  document.getElementById("healthForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const output = document.getElementById("recommendations");
+    const sleep = parseInt(document.getElementById("sleep").value);
+    const water = parseInt(document.getElementById("water").value);
+    const activity = document.getElementById("activity").value;
+    const weather = document.getElementById("weather").value;
+
+    let totalWaterNeed = 8;
+    if (activity === "medium") totalWaterNeed += 2;
+    else if (activity === "high") totalWaterNeed += 4;
+    if (sleep < 6) totalWaterNeed += 1;
+
+    const breakfast = mostCommonMeal(selected, "breakfast");
+    const lunch = mostCommonMeal(selected, "lunch");
+    const dinner = mostCommonMeal(selected, "dinner");
+
+    output.innerHTML = `
+      <p><strong>Recommended Water Intake:</strong> <span class="highlight">${totalWaterNeed}</span> glasses (you had ${water})</p>
+      <p><strong>Weather-Based Diet Advice:</strong> ${weatherTips[weather]}</p>
+      <p><strong>Suggested Routine:</strong></p>
+      <ul>
+        <li><strong>Breakfast:</strong> ${breakfast}</li>
+        <li><strong>Lunch:</strong> ${lunch}</li>
+        <li><strong>Dinner:</strong> ${dinner}</li>
+      </ul>
+    `;
+
+    if (selected.size > 0) {
+      output.innerHTML += `<p><strong>Symptom-Based Tips:</strong></p><ul>`;
+      selected.forEach(sym => {
+        output.innerHTML += `<li><strong>${sym.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</strong>: ${recommendations[sym].tips}</li>`;
+      });
+      output.innerHTML += `</ul>`;
+    } else {
+      output.innerHTML += `<p>No symptoms selected. General wellness plan shown.</p>`;
+    }
+
+    document.getElementById("resultBox").style.display = "block";
+  });
+</script>
+
+</body>
+</html>

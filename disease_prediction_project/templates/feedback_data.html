@@ -1,0 +1,86 @@
+
+ <!-- http://127.0.0.1:5000/feedback_data-->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Data</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif; /* Font choice */
+            line-height: 1.6; /* Spacing between lines */
+            background-color: #f4f4f4; /* Light background color */
+            color: #333; /* Dark text color */
+            padding: 20px; /* Padding around the body */
+        }
+
+        h1 {
+            text-align: center; /* Center the title */
+            color: #2c3e50; /* Darker color for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        /* Table styling */
+        table {
+            width: 100%; /* Full-width table */
+            margin: 20px 0; /* Space around the table */
+            border-collapse: collapse; /* Merge borders */
+            background-color: #fff; /* White background for the table */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        }
+
+        th, td {
+            padding: 15px; /* Space inside cells */
+            text-align: left; /* Align text to the left */
+            border-bottom: 1px solid #ddd; /* Bottom border for cells */
+        }
+
+        th {
+            background-color: #3498db; /* Blue header background */
+            color: white; /* White text color for header */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Light grey background on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            table, th, td {
+                font-size: 14px; /* Smaller font size on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Feedback Records</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Suggestion</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Location</th>
+        </tr>
+        {% for record in feedback_records %}
+        <tr>
+            <td>{{ record[0] }}</td>  <!-- ID -->
+            <td>{{ record[1] }}</td>  <!-- Suggestion -->
+            <td>{{ record[2] }}</td>  <!-- Name -->
+            <td>{{ record[3] }}</td>  <!-- Email -->
+            <td>{{ record[4] }}</td>  <!-- Phone -->
+            <td>{{ record[5] }}</td>  <!-- Location -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
